@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 export default function Home() {
+  console.log("Mongodb", process.env.MONGODB_URI);
   return (
     <div>
       <Head>
