@@ -7,8 +7,6 @@ async function dbConnect() {
     return
   }
 
-  console.log("333", process.env.MONGODB_URI);
-
   return mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -1,3 +1,5 @@
+import { getSession } from 'next-auth/client'
+
 import dbConnect from '../../../utils/dbConnect'
 import Blog from '../../../models/Blog'
 
@@ -5,6 +7,12 @@ export default async function handler(req, res){
     const { method } = req;
 
     await dbConnect();
+
+    const session = await getSession({ req: req });
+    if(!session){
+      res.status(401).json({ message: 'Failed!' })
+      return;
+    }
 
     switch(method){
         case 'POST':
